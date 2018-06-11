@@ -1,18 +1,37 @@
 Describe 'Get-SolarizedColor' {
 
-    It 'returns an RgbColor' {
-        Get-SolarizedColor -Name 'Red' | Should -BeOfType [PoshCode.Pansies.RgbColor]
+    It 'returns all colors' {
+        $colors = Get-SolarizedColor
+        $colors.Count | Should -BeGreaterOrEqual 16
     }
 
-    $colorNameTests = (Get-SolarizedPalette).GetEnumerator() | ForEach-Object {
-        @{ Name = $_.Name; Expected = $_.Value }
-    }
-    It 'supports each color from Get-SolarizedPalette' -TestCases $colorNameTests {
-        param($Name, $Expected)
-        Get-SolarizedColor -Name $Name | Should -Be $Expected
+    @(
+        'Base03'
+        'Base02'
+        'Base01'
+        'Base00'
+        'Base0'
+        'Base1'
+        'Base2'
+        'Base3'
+        'Yellow'
+        'Orange'
+        'Red'
+        'Magenta'
+        'Violet'
+        'Blue'
+        'Cyan'
+        'Green'
+    ) | ForEach-Object {
+        It "returns the color $_" {
+            Get-SolarizedColor -Name $_ | Should -BeOfType [PoshCode.Pansies.RgbColor]
+        }
+        It 'adds a Name property' {
+            Get-SolarizedColor -Name $_ | Select-Object -ExpandProperty Name | Should -Be $_
+        }
     }
 
-    It 'supports named colors' {
+    It 'supports body text' {
         Get-SolarizedColor -Name body | Should -Be (Get-SolarizedPalette).Base0
     }
 
