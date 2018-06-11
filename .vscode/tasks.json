@@ -1,0 +1,38 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+
+  "linux": {
+    "command": "/usr/bin/powershell"
+  },
+  "osx": {
+    "command": "/usr/local/bin/powershell"
+  },
+  // Associate with test task runner
+  "tasks": [
+    {
+      "label": "Pester",
+      "type": "shell",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated"
+      },
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "command": "C:/Program Files/PowerShell/6.0.2/pwsh.exe",
+      "args": [
+        "-NoProfile",
+        "-Command",
+        "Invoke-Build",
+        "Test",
+        "-Editor VSCode"
+      ],
+      "problemMatcher": "$pester"
+    }
+  ]
+}
