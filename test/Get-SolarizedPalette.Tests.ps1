@@ -1,5 +1,12 @@
 Describe 'Get-SolarizedPalette' {
-    It 'works' {
-        Get-SolarizedPalette | Should -BeOfType [Hashtable]
+    It 'has items' {
+        Get-SolarizedPalette | Should -Not -BeNullOrEmpty
+        (Get-SolarizedPalette).Red | Should -Not -BeNullOrEmpty
     }
+
+    It 'cannot be emptied' {
+        (Get-SolarizedPalette).Clear()
+        Get-SolarizedPalette | Should -Not -BeNullOrEmpty
+    }
+
 }
