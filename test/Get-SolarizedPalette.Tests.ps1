@@ -1,5 +1,5 @@
 Describe 'Get-SolarizedPalette' {
     It 'works' {
-        Get-SolarizedPalette | Should -BeOfType [PSCustomObject]
+        Get-SolarizedPalette | Should -BeOfType [Hashtable]
     }
 }
