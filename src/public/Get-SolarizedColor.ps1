@@ -28,7 +28,7 @@ function Get-SolarizedColor {
     }
     $colors | ForEach-Object {
         if ($script:Palette.$_) {
-            [PoshCode.Pansies.RgbColor]::new($script:Palette.$_) | Add-Member -PassThru -Type NoteProperty -Name 'Name' -Value $_
+            [PoshCode.Pansies.RgbColor]::new($script:Palette.$_) | Add-Member -PassThru -Type NoteProperty -Name 'SolarizedName' -Value $_
         }
     }
 }

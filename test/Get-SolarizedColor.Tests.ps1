@@ -26,8 +26,8 @@ Describe 'Get-SolarizedColor' {
         It "returns the color $_" {
             Get-SolarizedColor -Name $_ | Should -BeOfType [PoshCode.Pansies.RgbColor]
         }
-        It 'adds a Name property' {
-            Get-SolarizedColor -Name $_ | Select-Object -ExpandProperty Name | Should -Be $_
+        It 'adds a SolarizedName property' {
+            Get-SolarizedColor -Name $_ | Select-Object -ExpandProperty SolarizedName | Should -Be $_
         }
     }
 
