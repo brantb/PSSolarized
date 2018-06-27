@@ -30,7 +30,7 @@
     Copyright         = '(c) 2018 Brant Bobby. All rights reserved.'
 
     # Description of the functionality provided by this module
-    # Description = ''
+    Description       = 'Defines colors from the Solarized palette by Ethan Schoonover'
 
     # Minimum version of the Windows PowerShell engine required by this module
     PowerShellVersion = '5.0'
